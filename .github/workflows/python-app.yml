@@ -38,4 +38,4 @@ jobs:
         SLACK_MESSAGE: 'Build done :rocket:'
         SLACK_TITLE: Github action update
         SLACK_USERNAME: webhookbot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK: https://hooks.slack.com/services/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
