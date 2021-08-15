@@ -11,16 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Notify slack success
-      if: success()
-      env:
-        SLACK_BOT_TOKEN: xoxb-992869852182-2382134462402-gjYGMHXWOfC74MOQFfxcUvRE
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        channel: build_status
-        status: STARTING
-        color: warning
-        
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -40,22 +30,13 @@ jobs:
     - name: Test with pytest
       run: |
         pytest *.py
-    - name: Notify slack success
-      if: success()
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_BOT_TOKEN: xapp-1-A02BLMW9R7T-2388324018532-87e53aba8efa6504f8fca98cd399a2cd119652c48c2cafba87c59eb3921ce006
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        channel: app-alerts
-        status: SUCCESS
-        color: good
-
-    - name: Notify slack fail
-      if: failure()
-      env:
-        SLACK_BOT_TOKEN: xapp-1-A02BLMW9R7T-2388324018532-87e53aba8efa6504f8fca98cd399a2cd119652c48c2cafba87c59eb3921ce006
-      uses: voxmedia/github-action-slack-notify-build@v1
-      with:
-        channel: app-alerts
-        status: FAILED
-        color: danger
+        SLACK_CHANNEL: general
+        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+        SLACK_ICON: https://github.com/rtCamp.png?size=48
+        SLACK_MESSAGE: 'Post Content :rocket:'
+        SLACK_TITLE: Post Title
+        SLACK_USERNAME: rtCamp
+        SLACK_WEBHOOK: https://hooks.slack.com/services/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
