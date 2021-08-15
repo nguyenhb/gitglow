@@ -35,8 +35,7 @@ jobs:
       env:
         SLACK_CHANNEL: build_status
         SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-        SLACK_ICON: https://github.com/rtCamp.png?size=48
         SLACK_MESSAGE: 'Build done :rocket:'
         SLACK_TITLE: Github action update
-        SLACK_USERNAME: github
+        SLACK_USERNAME: webhookbot
         SLACK_WEBHOOK: https://hooks.slack.com/services/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
