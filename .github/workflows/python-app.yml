@@ -32,4 +32,4 @@ jobs:
         pytest *.py
     - name: Slack Notification
       run: |
-        curl -X POST --data-urlencode "payload={\"channel\": \"#build_status\", \"username\": \"webhookbot\", \"text\": \"This is posted to #build_status and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+        curl -X POST --data-urlencode "payload={\"channel\": \"#build_status\", \"username\": \"webhookbot\", \"text\": \"This is posted to #build_status and comes from a bot named webhookbot.\"}" https://hooks.slack.com/services/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
