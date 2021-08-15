@@ -31,11 +31,5 @@ jobs:
       run: |
         pytest *.py
     - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_CHANNEL: build_status
-        SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-        SLACK_MESSAGE: 'Build done :rocket:'
-        SLACK_TITLE: Github action update
-        SLACK_USERNAME: webhookbot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+      run: |
+        curl -X POST --data-urlencode "payload={\"channel\": \"#build_status\", \"username\": \"webhookbot\", \"text\": \"This is posted to #build_status and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
